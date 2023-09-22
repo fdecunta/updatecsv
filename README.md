@@ -8,6 +8,8 @@ Each plant is assigned an ID number. Sometimes, I can take measurements in the o
 
 The planillator try to solve this problem. I input the data into a spreadsheet exactly as it was recorded on paper. Then, the planillator merges this file with the rest of the data based on the ID and the column name.
 
+It works with CSV files because they are easier to manipulate and highly portable.
+
 ## Usage
 
 ```bash
