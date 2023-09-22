@@ -3,8 +3,6 @@ from datetime import date
 from shutil import copyfile
 import sys
 
-# El programa tiene que producir instrucciones para generar una lista de pares ordenados i,j y un valor a guardar. Para llegar a esa lista debe realizar chequeos y verificaciones. Finalmente, se arma una nueva estructura de datos a partir de la lista de instrucciones.
-
 src_file = sys.argv[2]
 dst_file = sys.argv[1]
 # delimiter = sys.argv[??]
@@ -21,9 +19,9 @@ class dataframe:
 
         self.filename = csv_file
         self.header = rows[0]
-        self.features = self.header[1:]
+        self.features = self.header[1:] # Aca hay un problema: si el ID no es la primera columna, cagamos. Pero quien demonios no lo pondria primero
         self.body = rows[1:]
-        self.id_col_index = self.header.index(id_colname)
+        self.id_col_index = self.header.index(id_colname) 
         self.id_vector = [i[self.id_col_index] for i in self.body]
 
 
@@ -133,22 +131,23 @@ while len(input_data.features) != 0:
             err = -1
 
 
+# Abort in case of error
 if err != 0:
     exit (1)
 
+
+# Create back-up
 today = date.today()
 fmt_date = "{}-{}-{}".format(today.year, today.month, today.day)
 bak_name = old_data.filename + "_"  + fmt_date + ".bak"
 copyfile(old_data.filename, bak_name)
 print(f'\nSe creo back-up:   {bak_name}')
 
-
-
+# Save updated csv
 with open(old_data.filename, 'w', newline='') as csvfile:
     writer = csv.writer(csvfile, delimiter=delimitador,
                             quotechar='"', quoting=csv.QUOTE_MINIMAL)
     writer.writerow(merged_df.header)
     for row in merged_df.body:
         writer.writerow(row)
-
 print(f'Se actualizo:   {old_data.filename}')        
