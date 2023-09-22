@@ -1,3 +1,5 @@
+#!/usr/bin/env PYTHONV
+
 import csv
 from datetime import date
 from shutil import copyfile

@@ -1,0 +1,33 @@
+.TH "planillator" "1" 
+
+.SH "Name"
+.PP
+planillator - update a csv with another csv
+
+.SH "Synopsis"
+.PP
+planillator [-s separator] dataframe input
+
+.SH "Description"
+.PP
+Agrega al dataframe los datos de input a partir de una columna ID. Si una columna del input no existe la crea; si la columna existe la actualiza. El programa no sobreescribe datos ya cargados ni agrega nuevos IDs. Solo acepta archivos en formato csv.
+
+Guarda dos archivos: el dataframe actualizado y un back-up sin actualizar.
+
+.SS "Opciones"
+.PP
+-s    Specify the item separator in the csv files (default is colon)
+
+.PP
+-t    Test. Realiza el merge de los data frames sin guardar cambios
+
+.SH "Examples"
+
+.PP
+planillator experiment_data.csv plant_biomass.csv
+
+Agrega los datos de plant_biomass.csv a la base de datos experiment_data.csv
+
+.SH "Author"
+.PP
+fd 
