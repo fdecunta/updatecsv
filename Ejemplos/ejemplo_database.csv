@@ -1,0 +1,17 @@
+id,bloque,endofito,sim_herb,diloboderus
+1,bloque_1,E+,control,H+
+2,bloque_1,E+,control,H-
+3,bloque_1,E+,below,H+
+4,bloque_1,E+,below,H-
+5,bloque_1,E+,above,H+
+6,bloque_1,E+,above,H-
+7,bloque_1,E+,ambas,H+
+8,bloque_1,E+,ambas,H-
+9,bloque_1,E-,control,H+
+10,bloque_1,E-,control,H-
+11,bloque_1,E-,below,H+
+12,bloque_1,E-,below,H-
+13,bloque_1,E-,above,H+
+14,bloque_1,E-,above,H-
+15,bloque_1,E-,ambas,H+
+16,bloque_1,E-,ambas,H-
