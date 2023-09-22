@@ -1,8 +1,8 @@
 # Planillator
 
-# Motivation
+## Motivation
 
-# Usage
+## Usage
 
 ```bash
 planillator old_data.csv input_data.csv
@@ -14,6 +14,6 @@ For example:
 planillator experiment_2023.csv aboveground_biomass.csv
 ```
 
-# Installation
+## Installation
 
 I don't know
