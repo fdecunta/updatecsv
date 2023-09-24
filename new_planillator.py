@@ -166,7 +166,10 @@ checking)
                 exit(1)
             target_index = merged_df.header.index(feature)
 
-            if target_row[target_index] == "NA" or target_row[target_index] == "":
+            if target_row[target_index] == entry_value:
+                # Skip if the new value is the same as the old value
+                continue
+            elif target_row[target_index] == "NA" or target_row[target_index] == "":
                 # Don't overwrite existing data. 
                 target_row[target_index] = entry_value
                 print(f'\t{line}  ID: {entry_id}\t{feature} --> {target_row[target_index]}')
