@@ -25,7 +25,7 @@ class DataFrame:
         # Read the csv file
         with open(csv_file, newline='') as csvfile:
             datareader = csv.reader(csvfile, delimiter = delimitador, quotechar='"')
-            rows = [row for row in datareader]
+            rows = [row for row in datareader if len(row) > 0]
 
         # Attributes
         self.filename = csv_file 
