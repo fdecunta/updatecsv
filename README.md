@@ -20,4 +20,16 @@ planillator experiment_2023.csv aboveground_biomass.csv
 
 ## Installation
 
-I don't know
+```shell
+git clone https://github.com/fdecunta/new-planillator.git
+cd new-planillator
+sudo make install
+```
+
+To remove the program:
+
+```shell
+cd new-planillator
+sudo make uninstall
+```
+
