@@ -1,21 +1,21 @@
-# Planillator
+# updatecsv
 
-Merge two CSV files by a column. If some column is duplicated, it add new values but without overwritting old values. 
+This is a command-line program that merges two CSV files based on a specific column ("id" column by default). It adds new values without overwriting the old ones.
 
-I use it regularly to update data from experiments with new measures.
+I use this regularly to update data from experiments with new measurements.
 
-It works with only with CSV files because they are easier to manipulate and highly portable.
+It's designed to work exclusively with CSV files because they're easy to handle and highly portable.
 
 ## Usage
 
 ```bash
-planillator old_data.csv input_data.csv
+updatecsv old_data.csv input_data.csv
 ```
 
 For example:
 
 ```bash
-planillator experiment_2023.csv aboveground_biomass.csv
+updatecsv experiment_2023.csv aboveground_biomass.csv
 ```
 
 ## Installation
