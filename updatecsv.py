@@ -31,8 +31,6 @@ class DataFrame:
         self.filename = csv_file 
         self.header = rows[0]   # The first row must be the header row with the variables names
         self.body = rows[1:]            # The body which contains all the observations
-        # ????
-        self.features = self.header[1:] # TODO!!!: Aca hay un problema: si el ID no es la primera columna, cagamos. Pero quien demonios no lo pondria primero
 
         # Search for the ID column and raise an error if it doesn't exists
         try:
@@ -40,8 +38,12 @@ class DataFrame:
         except:
             print(f'Error: no se encontro la columna "{id_colname}" en el archivo {path.basename(self.filename)}')
             exit(2)
+
+        # self.features = self.header[1:] # TODO!!!: Aca hay un problema: si el ID no es la primera columna, cagamos. Pero quien demonios no lo pondria primero
+        self.features = [feature for feature in self.header if feature != id_colname]
             
         self.id_vector = [i[self.id_col_index] for i in self.body] # Vector with all the IDs in the file
+
 
 
 class MergedDataFrame:
@@ -223,6 +225,7 @@ def main():
 
     check_errors(old_data, input_data)
     merge_dataframes(old_data, input_data)
+
     exit(0)
 
 
