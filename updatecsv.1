@@ -1,30 +1,32 @@
-.TH "planillator" "1" 
+.TH "updatecsv" "1" 
 
 .SH "Name"
 .PP
-planillator - update a csv with another csv
+updatecsv - update a csv with another csv
 
 .SH "Synopsis"
 .PP
-planillator [-s separator] dataframe input
+updatecsv [-h] [-s SEPARATOR] [-d] [--by ID_COLNAME] old_data input_data
 
 .SH "Description"
 .PP
-Agrega al dataframe los datos de input a partir de una columna ID. Si una columna del input no existe la crea; si la columna existe la actualiza. El programa no sobreescribe datos ya cargados ni agrega nuevos IDs. Solo acepta archivos en formato csv.
 
-Guarda dos archivos: el dataframe actualizado y un back-up sin actualizar.
+The command adds data from an input file to an existing DataFrame based on a specified ID column. If a column from the input file does not already exist in the DataFrame, it creates a new column. If the column already exists, it updates the data. The program does not overwrite existing data or introduce new IDs. It only accepts input files in CSV format.
 
 .SS "Opciones"
 .PP
--s    Specify the item separator in the csv files (default is colon)
+-s    Specify the item separator in the csv files (default is comma)
 
 .PP
--t    Test. Realiza el merge de los data frames sin guardar cambios
+-d    Dry-run with no changes made
+
+.PP
+--by  Defines the column to use for the merge (default is id)
 
 .SH "Examples"
 
 .PP
-planillator experiment_data.csv plant_biomass.csv
+updatecsv experiment_data.csv plant_biomass.csv
 
 Agrega los datos de plant_biomass.csv a la base de datos experiment_data.csv
 

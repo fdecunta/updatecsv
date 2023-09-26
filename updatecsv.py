@@ -10,8 +10,9 @@ import sys
 prog_description = "updatecsv"
 # delimiter = sys.argv[??]
 id_colname = "id"
-delimitador = ","
-error_code = 0           
+separator = ","
+error_code = 0
+
 
 class DataFrame:
     def __init__(self, csv_file):
@@ -24,7 +25,7 @@ class DataFrame:
 
         # Read the csv file
         with open(csv_file, newline='') as csvfile:
-            datareader = csv.reader(csvfile, delimiter = delimitador, quotechar='"')
+            datareader = csv.reader(csvfile, delimiter = separator, quotechar='"')
             rows = [row for row in datareader if len(row) > 0]
 
         # Attributes
@@ -36,12 +37,10 @@ class DataFrame:
         try:
             self.id_col_index = self.header.index(id_colname) # Index of the ID column in the header list
         except:
-            print(f'Error: no se encontro la columna "{id_colname}" en el archivo {path.basename(self.filename)}')
+            print(f'Error: no se encontro la columna {id_colname} en el archivo {path.basename(self.filename)}')
             exit(2)
 
-        # self.features = self.header[1:] # TODO!!!: Aca hay un problema: si el ID no es la primera columna, cagamos. Pero quien demonios no lo pondria primero
         self.features = [feature for feature in self.header if feature != id_colname]
-            
         self.id_vector = [i[self.id_col_index] for i in self.body] # Vector with all the IDs in the file
 
 
@@ -183,16 +182,20 @@ checking)
     # Abort in case of error before make any change
     if error_code != 0:
         exit (1)
+    else:
+        return merged_df
 
-    # 4. Create back-up file with the old dataframe.
+
+def save_changes(old_data, merged_df):
+    # Create back-up file with the old dataframe.
     today = date.today()
     bak_name = f'{old_data.filename}_{today.isoformat()}.bak'
     copyfile(old_data.filename, bak_name)
     print(f'\nSe creo back-up:   {bak_name}')
 
-    # 5. Save the updated csv
+    # Save the updated csv
     with open(old_data.filename, 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile, delimiter=delimitador,
+        writer = csv.writer(csvfile, delimiter=separator,
                                 quotechar='"', quoting=csv.QUOTE_MINIMAL)
         writer.writerow(merged_df.header)
         writer.writerows(merged_df.body)
@@ -202,29 +205,48 @@ checking)
 # ----------------------------------------    
 
 def main():
-    parser = argparse.ArgumentParser(prog = 'planillator',
+    global separator
+    global id_colname
+
+    parser = argparse.ArgumentParser(prog = 'updatecsv',
                                      description = prog_description)
     parser.add_argument('-s',
-                        action = 'store_true',
-                        default = False,
-                        dest = "sflag",
-                        help ='Define el separador (coma por default)')
+                        action = 'store',
+                        default = ",",
+                        dest = "separator",
+                        help ='define the separator (default is comma)')
     parser.add_argument('-d',
                         action = 'store_true',
                         default = False,
                         dest = "dflag",
-                        help = 'dry-run. Realiza el merge sin guardar cambios')
+                        help = 'dry-run with no changes made')
+    parser.add_argument('--by',
+                        action = 'store',
+                        default = "id",
+                        dest = "id_colname",
+                        required = False,
+                        help = 'column to use for the merge (default is id)')
+
 
     parser.add_argument('old_data')
     parser.add_argument('input_data')
 
     options = parser.parse_args()
 
+    separator = options.separator
+    id_colname = options.id_colname
+
     old_data = DataFrame(options.old_data)
     input_data = DataFrame(options.input_data)
 
     check_errors(old_data, input_data)
-    merge_dataframes(old_data, input_data)
+    merged_df = merge_dataframes(old_data, input_data)
+    
+    if options.dflag:
+        print("\nDry-run. No changes have been made")
+        exit(0)
+    else:
+        save_changes(old_data, merged_df)
 
     exit(0)
 
