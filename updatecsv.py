@@ -20,7 +20,7 @@ class DataFrame:
 
         # Check if csv_file exists and is a regular file
         if path.isfile(csv_file) is False:
-            print(f'Error: no existe el archivo {csv_file}')
+            print(f'Error: file does not exist {csv_file}')
             exit(3)
 
         # Read the csv file
@@ -37,7 +37,7 @@ class DataFrame:
         try:
             self.id_col_index = self.header.index(id_colname) # Index of the ID column in the header list
         except:
-            print(f'Error: no se encontro la columna {id_colname} en el archivo {path.basename(self.filename)}')
+            print(f'Error: column {id_colname} was not found in {path.basename(self.filename)}')
             exit(2)
 
         self.features = [feature for feature in self.header if feature != id_colname]
@@ -67,7 +67,7 @@ def check_errors(old_data, input_data):
     # 1. Input data should not have repeated IDs.
     repeated_ids = [rep_id for rep_id in input_data.id_vector if input_data.id_vector.count(rep_id) > 1] 
     if len(repeated_ids) > 0:
-        print("Error: IDs repetidos en el archivo input")
+        print("Error: Duplicate IDs in the input file")
         print(repeated_ids)
         error_code = 1
 
@@ -75,17 +75,17 @@ def check_errors(old_data, input_data):
     alien_ids = [id_num for id_num in input_data.id_vector if id_num not in old_data.id_vector]
     if len(alien_ids) > 0:
         for alien_id in alien_ids:
-            print(f'Error: ID {alien_id} del archivo input no existe en archivo destino')
+            print(f'Error: ID {alien_id} from the input file does not exist in the destination file')
             error_code = 1
 
     # 3. All rows should have the same length (number of elements).
     for row in input_data.body:
         if len(row) != len(input_data.header):
-            print(f'Error: fila en archivo input con distinta cantidad de columnas que las demás:\n {row}')
+            print(f'Error: Row in the input file has a different number of columns than the others:\n {row}')
             error_code = 1
 
     if error_code != 0:
-        print("No se realizaron cambios.")
+        print("No changes were made.")
         exit(1)
 
 
@@ -163,7 +163,7 @@ checking)
             target_row = find_row(merged_df, entry_id)
             if target_row is None:
                 # Check if ID exists in the merged data frame. This sould be OK but just for the case
-                print(f'Error al tratar de hacer merge. El id {entry_id} no existe.')
+                print(f'Error when trying to perform a merge. The ID {entry_id} does not exist.')
                 exit(1)
             target_index = merged_df.header.index(feature)
 
@@ -176,7 +176,7 @@ checking)
                 print(f'\t{line}  ID: {entry_id}\t{feature} --> {target_row[target_index]}')
                 line += 1
             else:
-                print(f'Error: se intentó sobre-escribir la variable {feature} en el ID {entry_id}')
+                print(f'Error: Attempted to overwrite the variable {feature} in ID {entry_id}')
                 error_code = -1
 
     # Abort in case of error before make any change
