@@ -16,7 +16,7 @@ error_code = 0
 
 class DataFrame:
     def __init__(self, csv_file):
-        """Read a csv file and represents it as a dataframe."""
+        """Reads a csv file and represents it as a dataframe."""
 
         # Check if csv_file exists and is a regular file
         if path.isfile(csv_file) is False:
