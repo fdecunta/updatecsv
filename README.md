@@ -21,9 +21,9 @@ updatecsv experiment_2023.csv aboveground_biomass.csv
 ### Options
 
 ```
-  -s [separator]    Specify the item separator in the csv files (default is comma)
-  -d    Dry-run with no changes made
-  --by [column name] Defines the column to use for the merge (default is id)
+  -s   [separator]    Specify the item separator in the csv files (default is comma)
+  -d                  Dry-run with no changes made
+  --by [column name]  Defines the column to use for the merge (default is id)
 ```
 
 
