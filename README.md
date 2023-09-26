@@ -25,8 +25,7 @@ For example:
 updatecsv experiment_2023.csv aboveground_biomass.csv
 ```
 
-The program creates a backup file and updates the original file.
-
+The program creates a backup file, updates the original file, and prints the changes to stdout.
 
 ### Options
 
