@@ -1,19 +1,23 @@
 .TH "updatecsv" "1" 
 
-.SH "Name"
+.SH Name
 .PP
-updatecsv - add data to a CSV from another CSV
+updatecsv - transfer data from one CSV file to another
 
-.SH "Synopsis"
+.SH Synopsis
 .PP
 updatecsv [-h] [-s SEPARATOR] [-d] [--by ID_COLNAME] old_data input_data
 
-.SH "Description"
+.SH Description
 .PP
 
-The command adds data from an input file to an existing DataFrame based on a specified ID column. If a column from the input file does not already exist in the DataFrame, it creates a new column. If the column already exists, it updates the data. The program does not overwrite existing data or introduce new IDs. It only accepts input files in CSV format.
+This is a simple command-line tool for transferring data from one CSV file to another. This is done based on a specified column, which must contain unique identifiers (e.g., ID numbers). It's like a merge, but with a few constraints.
 
-.SS "Opciones"
+The program was designed for updating data frames with experiments data, where each row represents an experimental unit. Thus, it does not add new rows, and the identifiers in the input file must be a subset of those in the original file. Also, data from the original file cannot be overwritten.
+
+The program creates a backup file, updates the original file, and prints the changes in the terminal.
+
+.SH Options
 .PP
 -s    Specify the item separator in the csv files (default is comma)
 
@@ -23,12 +27,20 @@ The command adds data from an input file to an existing DataFrame based on a spe
 .PP
 --by  Defines the column to use for the merge (default is id)
 
-.SH "Examples"
+.SH Examples
 
 .PP
-updatecsv experiment_data.csv plant_biomass.csv
+Adding new data with default values (comma as separator, id as merge column):
 
-Agrega los datos de plant_biomass.csv a la base de datos experiment_data.csv
+.B
+updatecsv experiment_2023.csv aboveground_biomass.csv
+
+.PP
+Adding new data with custom options (semicolon as the separator, dry-run mode, and a custom merge column named 'key'):
+
+.B
+updatecsv -s ';' -d --by key experiment_2022.csv alkaloids.csv
+
 
 .SH "Author"
 .PP
