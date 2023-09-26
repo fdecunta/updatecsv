@@ -1,15 +1,14 @@
 # updatecsv
 
-This is a minimal command-line utility designed to update an existing CSV file with data from another CSV file. This is done based on a specified column, which should serve as a unique identifier. It allows you to add new values without overwriting existing data.
+This is a minimal command-line utility to update an existing CSV file with data from another CSV file. This is done based on a specified column, which must be a unique identifier. It allows you to add new columns and values without overwriting existing data.
 
 The program creates a backup file, updates the original file, and prints the changes in the terminal.
 
-I found it useful for updating data from experiments with new measurements.
+I was design for updating data from experiments with new measurements.
 
 
 ## Features
 
-- Update an existing CSV file with data from another CSV file based on a specified unique identifier column.
 - Safely add new values without overwriting existing data.
 - Automatically creates a backup file for the original CSV.
 - Flexible column separator.
