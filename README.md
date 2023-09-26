@@ -8,13 +8,13 @@ I found it useful for updating data from experiments with new measurements.
 
 - Merge two CSV files based on a specified column.
 - Safely add new values without overwriting existing data.
-- Use CSV files due to their ease of handling and portability.
+- Designed for use with CSV files due to their ease of handling and portability.
 
 
 ## Usage
 
 ```bash
-updatecsv old_data.csv input_data.csv
+updatecsv [OPTIONS] old_data.csv input_data.csv
 ```
 
 For example:
@@ -46,4 +46,9 @@ To remove the program:
 cd updatecsv
 sudo make uninstall
 ```
+
+## Requirements
+
+- Python 3.6+
+- CSV library
 
