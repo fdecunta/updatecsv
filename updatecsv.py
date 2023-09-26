@@ -6,7 +6,7 @@ from datetime import date
 from os import path
 from shutil import copyfile
 
-prog_description = "Merges two CSV files based on a specific column"
+prog_description = "Transfer data from one CSV file to another based on a unique identifier column"
 
 id_colname = "id"
 separator = ","
