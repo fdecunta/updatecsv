@@ -1,8 +1,14 @@
 # updatecsv
 
-This a simple command-line program that merges two CSV files based on a specific column. It adds new values without overwriting the old ones.
+This is a command-line utility designed to merge two CSV files based on a specific column, allowing you to add new values without overwriting existing ones.
 
-I use this regularly to update data from experiments with new measurements.
+I found it useful for updating data from experiments with new measurements.
+
+## Features
+
+- Merge two CSV files based on a specified column.
+- Safely add new values without overwriting existing data.
+- Designed for use with CSV files due to their ease of handling and portability.
 
 It's designed to work exclusively with CSV files because they're easy to handle and highly portable.
 
