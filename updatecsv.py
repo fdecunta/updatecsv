@@ -214,11 +214,13 @@ def main():
                         action = 'store',
                         default = ",",
                         dest = "separator",
+                        required = False,
                         help ='define the separator (default is comma)')
     parser.add_argument('-d',
                         action = 'store_true',
                         default = False,
                         dest = "dflag",
+                        required = False,
                         help = 'dry-run with no changes made')
     parser.add_argument('--by',
                         action = 'store',
