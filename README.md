@@ -1,15 +1,14 @@
 # updatecsv
 
-This is a minimal command-line utility to add data to a CSV file from another CSV file. This is done based on a specified column, which must be a unique identifier (e.g., ID number). 
+This is a minimal command-line utility to add data to a CSV file from another CSV file. This is done based on a specified column, which must contain unique identifiers (e.g., ID number). 
 
-It was designed for updating experiments data frames, where each row represents an experimental unit. Thus, it does not add new rows and the input file identifiers must be a subset of the original file. Also, data from the original file can't be overwrited.
-
+The program was designed for updating data frames with experiments data, where each row represents an experimental unit. Thus, it does not add new rows, and the identifiers in the input file must be a subset of those in the original file. Also, data from the original file cannot be overwritten.
 
 The program creates a backup file, updates the original file, and prints the changes in the terminal.
 
 ## Features
 
-- Safely add new values without overwriting existing data.
+- Safely add new values.
 - Automatically creates a backup file for the original CSV.
 - Flexible column separator.
 - Customizable merge column.
