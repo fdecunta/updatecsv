@@ -1,6 +1,6 @@
 # updatecsv
 
-This is a command-line program that merges two CSV files based on a specific column ("id" column by default). It adds new values without overwriting the old ones.
+This is a command-line program that merges two CSV files based on a specific column. It adds new values without overwriting the old ones.
 
 I use this regularly to update data from experiments with new measurements.
 
