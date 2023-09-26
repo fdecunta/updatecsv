@@ -20,7 +20,15 @@ I found it useful for updating data from experiments with new measurements.
 updatecsv [OPTIONS] old_data.csv input_data.csv
 ```
 
-### Examples
+### Options
+
+```
+  -s   [separator]    Specify the item separator in the csv files (default is comma)
+  -d                  Dry-run with no changes made
+  --by [column name]  Defines the column to use for the merge (default is id)
+```
+
+## Examples
 
 Merging two CSV files without specifying options:
 
@@ -36,15 +44,6 @@ updatecsv -s ';' -d --by key old_data.csv input_data.csv
 ```
 
 
-
-
-### Options
-
-```
-  -s   [separator]    Specify the item separator in the csv files (default is comma)
-  -d                  Dry-run with no changes made
-  --by [column name]  Defines the column to use for the merge (default is id)
-```
 
 
 ## Installation
