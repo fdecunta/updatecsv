@@ -191,7 +191,7 @@ def save_changes(old_data, merged_df):
     today = date.today()
     bak_name = f'{old_data.filename}_{today.isoformat()}.bak'
     copyfile(old_data.filename, bak_name)
-    print(f'\nSe creo back-up:   {bak_name}')
+    print(f'\nBack-up was created:   {bak_name}')
 
     # Save the updated csv
     with open(old_data.filename, 'w', newline='') as csvfile:
@@ -199,7 +199,7 @@ def save_changes(old_data, merged_df):
                                 quotechar='"', quoting=csv.QUOTE_MINIMAL)
         writer.writerow(merged_df.header)
         writer.writerows(merged_df.body)
-    print(f'Se actualizo:   {old_data.filename}')        
+    print(f'Updated:   {old_data.filename}')        
 
     
 # ----------------------------------------    
