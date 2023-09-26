@@ -1,15 +1,17 @@
 # updatecsv
 
-This is a minimal command-line utility designed to merge two CSV files based on a specific column, allowing you to add new values without overwriting existing ones.
+This is a minimal command-line utility designed to update an existing CSV file with data from another CSV file. This is done based on a specified column, which should serve as a unique identifier. It allows you to add new values without overwriting existing data.
 
 The program creates a backup file, updates the original file, and prints the changes in the terminal.
 
 I found it useful for updating data from experiments with new measurements.
 
-### Features
 
-- Merge two CSV files based on a specified column.
+## Features
+
+- Update an existing CSV file with data from another CSV file based on a specified unique identifier column.
 - Safely add new values without overwriting existing data.
+- Automatically creates a backup file for the original CSV.
 - Flexible column separator.
 - Customizable merge column.
 - Dry-run mode for previewing changes without applying them.
@@ -27,7 +29,7 @@ Options:
 
 ## Examples
 
-Merging two CSV files without specifying options:
+Merging two CSV files with default values (comma as separator, id as merge column):
 
 ```bash
 updatecsv experiment_2023.csv aboveground_biomass.csv
