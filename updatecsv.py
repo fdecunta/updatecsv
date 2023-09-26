@@ -1,4 +1,4 @@
-#!/usr/bin/env PYTHONV
+#!/usr/bin/env python3
 
 import argparse
 import csv
@@ -7,8 +7,8 @@ from os import path
 from shutil import copyfile
 import sys
 
-prog_description = "updatecsv"
-# delimiter = sys.argv[??]
+prog_description = "Merges two CSV files based on a specific column"
+
 id_colname = "id"
 separator = ","
 error_code = 0
