@@ -2,6 +2,8 @@
 
 This is a minimal command-line utility designed to merge two CSV files based on a specific column, allowing you to add new values without overwriting existing ones.
 
+The program creates a backup file, updates the original file, and prints the changes in the terminal.
+
 I found it useful for updating data from experiments with new measurements.
 
 ### Features
@@ -11,7 +13,6 @@ I found it useful for updating data from experiments with new measurements.
 - Flexible column separator.
 - Customizable merge column.
 - Dry-run mode for previewing changes without applying them.
-
 
 ## Usage 
 
@@ -34,7 +35,7 @@ Merging with custom options (semicolon as the separator, dry-run mode, and a cus
 updatecsv -s ';' -d --by key old_data.csv input_data.csv
 ```
 
-The program creates a backup file, updates the original file, and prints the changes in the terminal.
+
 
 
 ### Options
