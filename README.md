@@ -17,7 +17,7 @@ The program creates a backup file, updates the original file, and prints the cha
 ## Usage 
 
 ```
-updatecsv [OPTIONS] old_data.csv input_data.csv
+updatecsv [OPTIONS] original_data.csv input_data.csv
 
 Options:
   -s   [separator]    Specify the item separator in the csv files (default is comma)
