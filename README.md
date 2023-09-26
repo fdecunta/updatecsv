@@ -13,7 +13,7 @@ I found it useful for updating data from experiments with new measurements.
 - Dry-run mode for previewing changes without applying them.
 
 
-## Usage
+## Usage 
 
 ```bash
 updatecsv [OPTIONS] old_data.csv input_data.csv
@@ -21,8 +21,17 @@ updatecsv [OPTIONS] old_data.csv input_data.csv
 
 For example:
 
+Merging two CSV files without specifying options:
+
 ```bash
 updatecsv experiment_2023.csv aboveground_biomass.csv
+```
+
+Merging with custom options (semicolon as the separator, dry-run mode, and a custom merge column named 'key'):
+
+
+```bash
+updatecsv -s ';' -d --by key old_data.csv input_data.csv
 ```
 
 The program creates a backup file, updates the original file, and prints the changes in the terminal.
