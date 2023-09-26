@@ -6,9 +6,12 @@ I found it useful for updating data from experiments with new measurements.
 
 ### Features
 
-- No external libraries.
+- Merge two CSV files based on a specified column.
 - Safely add new values without overwriting existing data.
-- Designed for use with CSV files due to their ease of handling and portability.
+- Flexible column separator.
+- Customizable merge column.
+- Dry-run mode for previewing changes without applying them.
+
 
 ## Usage
 
