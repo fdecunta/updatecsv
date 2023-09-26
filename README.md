@@ -21,15 +21,15 @@ updatecsv experiment_2023.csv aboveground_biomass.csv
 ## Installation
 
 ```shell
-git clone https://github.com/fdecunta/new-planillator.git
-cd new-planillator
+git clone https://github.com/fdecunta/updatecsv.git
+cd updatecsv
 sudo make install
 ```
 
 To remove the program:
 
 ```shell
-cd new-planillator
+cd updatecsv
 sudo make uninstall
 ```
 
