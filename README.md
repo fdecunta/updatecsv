@@ -10,7 +10,6 @@ I found it useful for updating data from experiments with new measurements.
 - Safely add new values without overwriting existing data.
 - Designed for use with CSV files due to their ease of handling and portability.
 
-
 ## Usage
 
 ```bash
@@ -22,6 +21,9 @@ For example:
 ```bash
 updatecsv experiment_2023.csv aboveground_biomass.csv
 ```
+
+The program creates a backup file and updates the original file.
+
 
 ### Options
 
