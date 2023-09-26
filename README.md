@@ -2,7 +2,7 @@
 
 This is a minimal command-line utility to add data to a CSV file from another CSV file. This is done based on a specified column, which must be a unique identifier (e.g., ID number). 
 
-It was designed for updating an experiment data frame, where each row represents an experimental unit. Thus, it does not add new rows and the input file must be a subset of the original file. Also it prevents you from overwriting existing data.
+It was designed for updating experiments data frames, where each row represents an experimental unit. Thus, it does not add new rows and the input file must be a subset of the original file. Also it prevents you from overwriting existing data.
 
 The program creates a backup file, updates the original file, and prints the changes in the terminal.
 
@@ -27,20 +27,18 @@ Options:
 
 ## Examples
 
-Merging two CSV files with default values (comma as separator, id as merge column):
+Adding new data with default values (comma as separator, id as merge column):
 
 ```bash
 updatecsv experiment_2023.csv aboveground_biomass.csv
 ```
 
-Merging with custom options (semicolon as the separator, dry-run mode, and a custom merge column named 'key'):
+Adding new deta with custom options (semicolon as the separator, dry-run mode, and a custom merge column named 'key'):
 
 
 ```bash
-updatecsv -s ';' -d --by key old_data.csv input_data.csv
+updatecsv -s ';' -d --by key experiment_2022.csv alkaloids.csv
 ```
-
-
 
 
 ## Installation
