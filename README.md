@@ -4,13 +4,12 @@ This is a command-line utility designed to merge two CSV files based on a specif
 
 I found it useful for updating data from experiments with new measurements.
 
-## Features
+### Features
 
 - Merge two CSV files based on a specified column.
 - Safely add new values without overwriting existing data.
-- Designed for use with CSV files due to their ease of handling and portability.
+- Use CSV files due to their ease of handling and portability.
 
-It's designed to work exclusively with CSV files because they're easy to handle and highly portable.
 
 ## Usage
 
