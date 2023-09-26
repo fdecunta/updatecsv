@@ -5,7 +5,6 @@ import csv
 from datetime import date
 from os import path
 from shutil import copyfile
-import sys
 
 prog_description = "Merges two CSV files based on a specific column"
 
