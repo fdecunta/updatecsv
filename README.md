@@ -16,18 +16,10 @@ I found it useful for updating data from experiments with new measurements.
 
 ## Usage 
 
-```bash
+```
 updatecsv [OPTIONS] old_data.csv input_data.csv
 
 Options:
-  -s   [separator]    Specify the item separator in the csv files (default is comma)
-  -d                  Dry-run with no changes made
-  --by [column name]  Defines the column to use for the merge (default is id)
-```
-
-### Options
-
-```
   -s   [separator]    Specify the item separator in the csv files (default is comma)
   -d                  Dry-run with no changes made
   --by [column name]  Defines the column to use for the merge (default is id)
