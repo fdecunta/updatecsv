@@ -19,7 +19,7 @@ I found it useful for updating data from experiments with new measurements.
 updatecsv [OPTIONS] old_data.csv input_data.csv
 ```
 
-For example:
+### Examples
 
 Merging two CSV files without specifying options:
 
