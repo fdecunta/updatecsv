@@ -1,6 +1,6 @@
 # updatecsv
 
-This is a simple command-line tool for transferring data from one CSV file to another. This is done based on a unique identifiers column (e.g., ID numbers). It's like a merge, but with a few constraints.
+Command-line tool for transferring data from one CSV file to another. This is done based on a unique identifiers column (e.g., ID numbers). It's like a merge, but with a few constraints.
 
 The program was designed for updating data frames from experiments, where each row represents an experimental unit. Thus:
 
