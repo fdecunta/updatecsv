@@ -39,9 +39,8 @@ class DataFrame:
             print(f'Error: column {id_colname} was not found in {path.basename(self.filename)}')
             exit(2)
 
-        self.features = [feature for feature in self.header if feature != id_colname]
+        self.columns = [column for column in self.header if column != id_colname]
         self.id_vector = [i[self.id_col_index] for i in self.body] # Vector with all the IDs in the file
-
 
 
 class MergedDataFrame:
@@ -54,8 +53,8 @@ class MergedDataFrame:
         self.id_col_index = self.header.index(id_colname)
         self.id_vector = [i[self.id_col_index] for i in self.body]
 
-    def input(self, feature, value):
-        feature_index = self.header.index(feature)
+    def input(self, column, value):
+        column_index = self.header.index(column)
 
 # ----------------------------------------    
 
@@ -101,7 +100,7 @@ def find_row(dataframe, id_num):
 def fill_with_NA(dataframe):
     """Compares the length of each row with the length of the header.
     Each observation should have the same number of elements as the
-    header.  If any element is missing, it is filled with NA."""
+    header. If any element is missing, it is filled with NA."""
     for row in dataframe.body:
         n_missing_rows = len(dataframe.header) - len(row)
         while n_missing_rows != 0:
@@ -118,11 +117,11 @@ def merge_dataframes(old_data, input_data):
     # 1. Merged header
     """Merge the header from the two files. New columns from the input
     file are added if needed"""
-    alien_features = [i for i in input_data.features if i not in old_data.features]
+    alien_columns = [col for col in input_data.columns if col not in old_data.columns]
     merged_header = old_data.header.copy()
-    if len(alien_features) > 0:
-        for feature in alien_features:
-            merged_header.append(feature)
+    if len(alien_columns) > 0:
+        for column in alien_columns:
+            merged_header.append(column)
 
     # 2. Template body without new values
     """Creates the merged file's body using the old data. If new
@@ -132,31 +131,30 @@ def merge_dataframes(old_data, input_data):
     fill_with_NA(merged_df)
 
     # 3. Add the new values
-    """Updates the merged body with new values, one feature (variable)
+    """Updates the merged body with new values, one column (variable)
     at a time from the input data. For each row in the input data, it
     locates the corresponding row in the merged data frame by the ID
-    number and adds the new value to the respective feature. It raises
+    number and adds the new value to the respective column. It raises
     a warning if the new value is empty and raises an error in the
     following cases:
 
+       - If an attempt is made to overwrite an existing value.
        - If the ID does not exist (although this is unlikely due to prior
-checking)
-       - If an attempt is made to overwrite an existing value."""
-
-    while len(input_data.features) != 0:
-        feature = input_data.features.pop() # Take one feature at a time until the list is empty
-        f_index = input_data.header.index(feature) # Find the feature index to reach the new value in each row
+checking)"""
+    while len(input_data.columns) != 0:
+        column = input_data.columns.pop() # Take one column at a time until the list is empty
+        f_index = input_data.header.index(column) # Find the column index to reach the new value in each row
 
         line = 1                # Line number for printing in the terminal
         for input_row in input_data.body:
-            # For each row find the ID and the value corresponding to the current feature
+            # For each row find the ID and the value corresponding to the current column
             entry_id = input_row[input_data.id_col_index]
             entry_value = input_row[f_index]
 
             if len(entry_value) == 0:
                 """If the entry value is empty raise a warning but
                 don't stop the program, just skip"""
-                print(f'Warning: no value in the ID {entry_id} for the {feature} variable in input data. No value added')
+                print(f'Warning: no value in the ID {entry_id} for the {column} variable in input data. No value added')
                 continue
 
             target_row = find_row(merged_df, entry_id)
@@ -164,7 +162,7 @@ checking)
                 # Check if ID exists in the merged data frame. This sould be OK but just for the case
                 print(f'Error when trying to perform a merge. The ID {entry_id} does not exist.')
                 exit(1)
-            target_index = merged_df.header.index(feature)
+            target_index = merged_df.header.index(column)
 
             if target_row[target_index] == entry_value:
                 # Skip if the new value is the same as the old value
@@ -172,10 +170,10 @@ checking)
             elif target_row[target_index] == "NA" or target_row[target_index] == "":
                 # Don't overwrite existing data. 
                 target_row[target_index] = entry_value
-                print(f'\t{line}  ID: {entry_id}\t{feature} --> {target_row[target_index]}')
+                print(f'\t{line}  ID: {entry_id}\t{column} --> {target_row[target_index]}')
                 line += 1
             else:
-                print(f'Error: Attempted to overwrite the variable {feature} in ID {entry_id}')
+                print(f'Error: Attempted to overwrite the variable {column} in ID {entry_id}')
                 error_code = -1
 
     # Abort in case of error before make any change
@@ -227,7 +225,6 @@ def main():
                         dest = "id_colname",
                         required = False,
                         help = 'column to use for the merge (default is id)')
-
 
     parser.add_argument('old_data')
     parser.add_argument('input_data')
