@@ -1,21 +1,14 @@
 # updatecsv
 
-Command-line tool for transferring data from one CSV file to another. This is done based on a unique identifiers column (e.g., ID numbers). It's like a merge, but with a few constraints.
+Command-line tool for transferring data from one CSV file to another. This is done based on a unique identifiers column (e.g., ID numbers). 
 
-The program was designed for updating data frames from experiments, where each row represents an experimental unit. Thus:
+The program was designed for updating data from experiments, where each row represents an experimental unit. Thus, the program it is like a merge, but with a few constraints:
 
 - It does not add new rows.
 - The identifiers in the input file must be a subset of those in the original file.
-- Data in the original file cannot be overwritten
+- Data in the original file cannot be overwritten.
 
 The program creates a backup file, updates the original file, and prints the changes in the terminal.
-
-## Features
-
-- Safely add new values.
-- Automatically creates a backup file for the original CSV.
-- Flexible column separator.
-- Dry-run mode for previewing changes without applying them.
 
 ## Usage 
 
