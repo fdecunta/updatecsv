@@ -29,7 +29,7 @@ Adding new data with default values (comma as separator, id as merge column):
 updatecsv experiment_2023.csv aboveground_biomass.csv
 ```
 
-Adding new deta with custom options (semicolon as the separator, dry-run mode, and a custom merge column named 'key'):
+Adding new data with custom options (semicolon as the separator, dry-run mode, and a custom merge column named 'key'):
 
 
 ```bash
