@@ -2,7 +2,7 @@
 
 Command-line tool for transferring data from one CSV file to another. This is done based on a unique identifiers column (e.g., ID numbers). 
 
-The program was designed for updating data from experiments, where each row represents an experimental unit and each column a variable. Thus, the program it is like a merge, but with a few constraints:
+It is intended for updating data from experiments, where each row represents an experimental unit and each column a variable. Thus, the program it is like a merge, but with a few constraints:
 
 - It does not add new rows.
 - The identifiers in the input file must be a subset of those in the original file.
