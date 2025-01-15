@@ -10,7 +10,7 @@ It is intended for updating data from experiments, where each row represents an 
 
 The program creates a backup file, updates the original file, and prints the changes in the terminal.
 
-<img src="updatecsv.gif" alt="image" width="200" height="auto">
+<img src="updatecsv.gif" alt="image" width="300" height="auto">
 
 ## Why?
 
