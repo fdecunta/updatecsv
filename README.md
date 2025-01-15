@@ -10,6 +10,8 @@ It is intended for updating data from experiments, where each row represents an 
 
 The program creates a backup file, updates the original file, and prints the changes in the terminal.
 
+![Update some mock data](updatecsv.git "Update some mock data")
+
 ## Why?
 
 I work with many plants, each identified by a unique ID. During and after experiments, I measure various attributes for these plants, but the new data is rarely ordered by ID. Manually entering values into a spreadsheet—jumping from plant ID 4 to 132, then 54, and so on—is both time-consuming and prone to errors.
